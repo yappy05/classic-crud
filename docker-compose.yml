@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: postgres-db
+    image: postgres:latest
+    ports:
+      - 5441:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=practice-ai
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - practice
+  
+  db-crud:
+    container_name: postgres-db-crud
+    image: postgres:latest
+    ports:
+      - 5442:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=classic_crud
+    volumes:
+      - postgres-data-crud:/var/lib/postgresql/data
+    networks:
+      - practice
+
+volumes:
+  postgres-data:
+  postgres-data-crud:
+
+networks:
+  practice:

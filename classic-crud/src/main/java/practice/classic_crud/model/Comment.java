@@ -1,5 +1,7 @@
 package practice.classic_crud.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,13 +16,15 @@ public class Comment {
     @Column(columnDefinition = "TEXT")
     private String text;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "post_id")
+    @JsonIgnoreProperties({"comments", "author"})
     private Post post;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "author_id")
+    @JsonIgnoreProperties({"comments", "author", "posts"})
     private User author;
 
     public Comment() {}

@@ -3,7 +3,9 @@ package practice.classic_crud.config;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import practice.classic_crud.model.Post;
 import practice.classic_crud.model.UserProfile;
+import practice.classic_crud.model.dto.PostDto;
 import practice.classic_crud.model.dto.UserProfileDto;
 
 @Configuration
@@ -18,5 +20,6 @@ public class AppConfig {
                 });
 
         return modelMapper;
+
     }
 }

@@ -13,8 +13,12 @@ public class UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
 
-    public void save(UserDto dto) {
+    public User save(UserDto dto) {
         User user = modelMapper.map(dto, User.class);
-        userRepository.save(user);
+        return userRepository.save(user);
+    }
+    public User findById(Long id) {
+        User user = userRepository.findById(id).orElseThrow();
+        return user;
     }
 }
